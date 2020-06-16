@@ -1,0 +1,64 @@
+.body {
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
+}
+
+.calculator {
+  min-width: 500px;
+  background-color: antiquewhite;
+  padding: 40px;
+  background-color: black;
+  color: whitesmoke;
+}
+
+.calculator__top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.calculator__title {
+  margin: 0;
+}
+
+.calculator__subtitle {
+  margin: 0;
+}
+
+.calculator__sun-battery {
+  width: 200px;
+  height: 50px;
+  background-color: teal;
+}
+
+.calculator__screen-container {
+  margin: 20px 0;
+}
+
+.calculator__screen {
+  background-color: grey;
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+  border: 0;
+  text-align: right;
+  font-size: 40px;
+  font-family: inherit;
+  padding: 20px;
+}
+
+.calculator__keyboard {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.button {
+  font-family: inherit;
+  font-size: 40px;
+  border-radius: 10px;
+}
