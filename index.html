@@ -6,6 +6,7 @@
   <title>Calculator</title>
   <link rel="stylesheet" href="./vendor/normalize.css">
   <link rel="stylesheet" href="./style/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/7.0.1/math.min.js"></script>
   <script src="./scripts/script.js" defer></script>
 </head>
 <body class="body">
@@ -18,7 +19,7 @@
       <div class="calculator__sun-battery"></div>
     </div>
     <div class="calculator__screen-container">
-      <input type="text" class="calculator__screen" name="screen" value="0">
+      <input type="text" class="calculator__screen" name="screen" value="0" maxlength="24">
     </div>
     <div class="calculator__keyboard">
       <button type="button" class="button button_type_reset">C</button>

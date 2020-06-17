@@ -9,46 +9,58 @@ let currentResult = defaultResult;
 let operator = null;
 let currentOperator = null;
 
+const getNumber = () => currentOutput.value;
+const setNumber = value => currentOutput.value = value.toString().slice(0, 24);
+
 const printNumber = (numb) => {
-  let output = currentOutput.value;
-  // If operation button was pressed
+  let output = getNumber();
+  // Disabling adding to input is the result is shown or Error
+  if (currentResult || output === 'Error') {
+    reset();
+    output = '';
+  }
+  // Disable adding to input if operation button was pressed
   if (currentOperator) {
     operator = currentOperator;
     currentOperator = null;
-    currentOutput.value = '';
+    output = '';
   }
   // Only one decimal point allowed, removing front zero
   if (numb === '.') {
     if (output.indexOf(numb) !== -1) return;
-  } else if (output === '0') currentOutput.value = '';
+  } else if (output === '0') output = '';
 
-  currentOutput.value += numb;
+  setNumber(output += numb);
 }
 
-const calculate = (firstNum, sign, secondNum) => {
+const addOperator = (sign) => {
+  if (getNumber() === 'Error') return;
+  if (sign !== 'RESULT') currentOperator = sign;
+  // Calculate if two numbers were provided
+  if (operator) {
+    if (!currentResult) currentResult = parseFloat(getNumber());
+    // Error when dividing by 0
+    if (operator === 'DIVIDE' && currentResult === 0) {
+      setNumber('Error');
+      return;
+    }
+    let finalResult = calculate(resultBeforeCalc, currentResult, operator);
+    setNumber(finalResult);
+  }
+  resultBeforeCalc = parseFloat(getNumber());
+}
+
+const calculate = (firstNum, secondNum, sign) => {
   switch (sign) {
     case 'ADD':
       return firstNum + secondNum;
     case 'SUBTRACT':
       return firstNum - secondNum;
     case 'MULTIPLY':
-      return firstNum * secondNum * 10 / 10;
+      return math.multiply(math.bignumber(firstNum), math.bignumber(secondNum));
     case 'DIVIDE':
-      return firstNum / secondNum * 10 / 10;
-    case 'RESULT':
-      console.log('HEY' + firstNum + ' ' + sign + ' ' + secondNum);
-      return firstNum;
+      return math.divide(math.bignumber(firstNum), math.bignumber(secondNum));
   }
-}
-
-const addOperator = (sign) => {
-  // If previous number stored
-  if (resultBeforeCalc) {
-    currentResult = parseFloat(currentOutput.value);
-    currentOutput.value = calculate(resultBeforeCalc, operator, currentResult);
-  }
-  resultBeforeCalc = parseFloat(currentOutput.value);
-  currentOperator = sign;
 }
 
 const reset = () => {
@@ -59,10 +71,18 @@ const reset = () => {
   currentOutput.value = defaultResult;
 }
 
+/* const disableOperators = () => {
+  for (let el of operationButtons) {
+    el.removeEventListener('click', addOperator.bind(this, el.value));
+  };
+} */
+
 for (let el of numberButtons) {
   el.addEventListener('click', printNumber.bind(this, el.textContent));
 };
 for (let el of operationButtons) {
-  el.addEventListener('click', addOperator.bind(this, el.value));
+  let binder = addOperator.bind(this, el.value);
+  el.addEventListener('click', binder);
 };
 resetButton.addEventListener('click', reset);
+
