@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="./style/style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/7.0.1/math.min.js">
   </script>
-  <script src="./scripts/script.js" defer></script>
+  <script src="./scripts/index.js" defer></script>
 </head>
 
 <body class="body">
@@ -26,52 +26,53 @@
         maxlength="24">
     </div>
     <div class="calculator__keyboard">
-      <button type="button" class="button button_type_reset">C</button>
-      <button type="button" class="button button button_type_memory"
+      <button type="button" data-type="clear" class="button button_type_reset"
+        value="C">C</button>
+      <button type="button" data-type="memory" class="button button_type_memory"
         value="MRC">MRC</button>
-      <button type="button" class="button button button_type_memory"
+      <button type="button" data-type="memory" class="button button_type_memory"
         value="MMINUS">M-</button>
-      <button type="button" class="button button button_type_memory"
+      <button type="button" data-type="memory" class="button button_type_memory"
         value="MPLUS">M+</button>
-      <button type="button" class="button button_type_advanced"
+      <button type="button" data-type="function" class="button button_type_advanced"
         value="NEGATE">+/-</button>
-      <button type="button" class="button button_type_advanced"
+      <button type="button" data-type="function" class="button button_type_advanced"
         value="PERCENT">%</button>
-      <button type="button" class="button button_type_advanced"
+      <button type="button" data-type="function" class="button button_type_advanced"
         value="SQUARE">V</button>
-      <button type="button" class="button button_type_advanced"
+      <button type="button" data-type="function" class="button button_type_advanced"
         value="BACKSPACE">&lt;</button>
-      <button type="button" class="button button_type_number"
+      <button type="button" data-type="number" class="button button_type_number"
         value="7">7</button>
-      <button type="button" class="button button_type_number"
+      <button type="button" data-type="number" class="button button_type_number"
         value="8">8</button>
-      <button type="button" class="button button_type_number"
+      <button type="button" data-type="number" class="button button_type_number"
         value="9">9</button>
-      <button type="button" class="button button_type_operation"
+      <button type="button" data-type="operation" class="button button_type_operation"
         value="DIVIDE">/</button>
-      <button type="button" class="button button_type_number"
+      <button type="button" data-type="number" class="button button_type_number"
         value="4">4</button>
-      <button type="button" class="button button_type_number"
+      <button type="button" data-type="number" class="button button_type_number"
         value="5">5</button>
-      <button type="button" class="button button_type_number"
+      <button type="button" data-type="number" class="button button_type_number"
         value="6">6</button>
-      <button type="button" class="button button_type_operation"
+      <button type="button" data-type="operation" class="button button_type_operation"
         value="MULTIPLY">*</button>
-      <button type="button" class="button button_type_number"
+      <button type="button" data-type="number" class="button button_type_number"
         value="1">1</button>
-      <button type="button" class="button button_type_number"
+      <button type="button" data-type="number" class="button button_type_number"
         value="2">2</button>
-      <button type="button" class="button button_type_number"
+      <button type="button" data-type="number" class="button button_type_number"
         value="3">3</button>
-      <button type="button" class="button button_type_operation"
+      <button type="button" data-type="operation" class="button button_type_operation"
         value="SUBTRACT">-</button>
-      <button type="button" class="button button_type_number"
+      <button type="button" data-type="number" class="button button_type_number"
         value="0">0</button>
-      <button type="button" class="button button_type_number"
+      <button type="button" data-type="point" class="button button_type_number"
         value=".">.</button>
-      <button type="button" class="button button_type_result"
-        value="RESULT">=</button>
-      <button type="button" class="button button_type_operation"
+      <button type="button" data-type="equals" class="button button_type_equals"
+        value="EQUALS">=</button>
+      <button type="button" data-type="operation" class="button button_type_operation"
         value="ADD">+</button>
     </div>
   </div>
