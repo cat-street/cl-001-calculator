@@ -1,3 +1,5 @@
+'use strict';
+
 const currentOutput = document.querySelector('.calculator__screen');
 const numberButtons = document.querySelectorAll('.button_type_number');
 const operationButtons = document.querySelectorAll('.button_type_operation');
@@ -47,6 +49,7 @@ const printNumber = numb => {
 };
 
 //TODO Disable buttons on error
+//TODO Disable multiple operations
 const addOperator = sign => {
   if (getNumber() === 'Error') return;
   // Setting up first number
@@ -131,25 +134,29 @@ const modifyValue = action => {
           // Adding to memory
         } else newValue = 0;
         if (firstValue) firstValue = newValue;
-        break;
     }
   }
   setNumber(newValue);
 };
 
 //TODO Fix double memory recall
+//TODO Clearing memory
 const accessMemory = value => {
   switch (value) {
     case 'MPLUS':
       memory += parseFloat(getNumber());
+      // Prevent adding to input
       memoryAdded = true;
       break;
-    case 'MMINUS':
-      memory -= parseFloat(getNumber());
-      memoryAdded = true;
+      case 'MMINUS':
+        memory -= parseFloat(getNumber());
+        // Prevent adding to input
+        memoryAdded = true;
       break;
     case 'MRC':
       setNumber(memory);
+      // On double recall without new input
+      if (currentOperator) operator = currentOperator;
       if (!secondValue) {
         secondValue = memory;
         operator = currentOperator;
@@ -166,6 +173,8 @@ const reset = () => {
   operator = null;
   currentOperator = null;
   currentOutput.value = 0;
+  memory = 0;
+  memoryAdded = false;
 };
 
 const switchButtons = () => {
@@ -181,7 +190,6 @@ const switchButtons = () => {
           break;
         case 'memoryButtons':
           func = accessMemory;
-          break;
       }
       const binder = func.bind(this, el.value);
       el.addEventListener('click', binder);
