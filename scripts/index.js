@@ -14,38 +14,33 @@ let memory = 0;
 const getOutput = () => currentOutput.value;
 // Convert & set the number on screen
 const setOutput = value =>
-  (currentOutput.value = value.toString().slice(0, 24));
+  (currentOutput.value = value.toString().slice(0, 14));
 
 
 const printNumber = value => {
-  let output = outputCheck();
+  let output = getOutput();
+  // Reset after pressing 'EQUALS' || on error
+  if (equalsPressed || output === 'Error') {
+    reset();
+    output = '';
+  }
+  // If operator was pressed clear the screen
+  if (currentOperator) {
+    operator = currentOperator;
+    currentOperator = null;
+    output = '';
+  }
+  // If functional key was pressed clear the screen
+  if (functionAdded) {
+    functionAdded = false;
+    output = '';
+  }
   // Only one decimal point allowed, removing leading zero
   if (value === '.') {
     if (output.indexOf('.') !== -1) return;
   } else if (output === '0') output = '';
   // Print the number if typed
   setOutput(output += value);
-}
-
-const outputCheck = () => {
-  let output = getOutput();
-  // Reset after pressing 'EQUALS' || on error
-  if (equalsPressed || output === 'Error') {
-    reset();
-    return '';
-  }
-  // If operator was pressed clear the screen
-  if (currentOperator) {
-    operator = currentOperator;
-    currentOperator = null;
-    return '';
-  }
-  // If functional key was pressed clear the screen
-  if (functionAdded) {
-    functionAdded = false;
-    return '';
-  }
-  return output;
 }
 
 const addOperator = operation => {
@@ -140,6 +135,7 @@ const memoryAccess = type => {
     case 'MMINUS':
       memory -= output;
       break;
+    //TODO Clear memory
     case 'MRC':
       setOutput(memory);
       // Enable calculation with memory recall as second argument
