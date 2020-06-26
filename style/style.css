@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: center;
   background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
+  font-family: monospace;
 }
 
 .calculator {
@@ -49,6 +50,10 @@
   font-size: 40px;
   font-family: inherit;
   padding: 20px;
+}
+
+.calculator__screen:disabled {
+  color: #000;
 }
 
 .calculator__keyboard {
