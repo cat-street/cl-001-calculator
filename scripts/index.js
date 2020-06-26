@@ -7,6 +7,8 @@ let currentOperator = null;
 let operator = null;
 let equalsPressed = false;
 let secondValue = null;
+let functionAdded = false;
+let memory = 0;
 
 // Return the number currently on screen
 const getOutput = () => currentOutput.value;
@@ -16,25 +18,34 @@ const setOutput = value =>
 
 
 const printNumber = value => {
-  let output = getOutput();
-  // Reset after pressing 'EQUALS' || on error
-  if (equalsPressed || output === 'Error') {
-    reset();
-    output = '';
-  }
-  // If operator was pressed clear the screen
-  if (currentOperator) {
-    operator = currentOperator;
-    currentOperator = null;
-    output = '';
-    // setOutput('');
-  }
+  let output = outputCheck();
   // Only one decimal point allowed, removing leading zero
   if (value === '.') {
     if (output.indexOf('.') !== -1) return;
   } else if (output === '0') output = '';
   // Print the number if typed
   setOutput(output += value);
+}
+
+const outputCheck = () => {
+  let output = getOutput();
+  // Reset after pressing 'EQUALS' || on error
+  if (equalsPressed || output === 'Error') {
+    reset();
+    return '';
+  }
+  // If operator was pressed clear the screen
+  if (currentOperator) {
+    operator = currentOperator;
+    currentOperator = null;
+    return '';
+  }
+  // If functional key was pressed clear the screen
+  if (functionAdded) {
+    functionAdded = false;
+    return '';
+  }
+  return output;
 }
 
 const addOperator = operation => {
@@ -44,8 +55,9 @@ const addOperator = operation => {
   if (equalsPressed) operator = null;
   // Continue calculation without 'EQUALS' pressed
   if (operator) calculateResultHandler();
-  // Clear 'calculation complete' flag
+  // Clear 'calculation complete' & 'function key pressed' flags
   equalsPressed = false;
+  functionAdded = false;
   // Add to the log
   result.push(+getOutput(), operation);
   // Save the operator for the calculation
@@ -96,12 +108,17 @@ const addFunction = func => {
       if (+output >= 0) {
         //TODO Write to log
         output = +math.sqrt(math.bignumber(output));
+        // Setting 'function key pressed' flag
+        functionAdded = true;
       } else {
         output = 'Error';
         return;
       }
-    case 'PERCENT':
-      output = +math.multiply(math.bignumber(output), 0.01);
+      break;
+      case 'PERCENT':
+        output = +math.multiply(math.bignumber(output), 0.01);
+        // Setting 'function key pressed' flag
+        functionAdded = true;
       break;
     case 'BACKSPACE':
       // Prevent deleting when calculation is in progress
@@ -112,6 +129,24 @@ const addFunction = func => {
       break;
   }
   setOutput(output);
+}
+
+const memoryAccess = type => {
+  let output = +getOutput();
+  switch (type) {
+    case 'MPLUS':
+      memory += output;
+      break;
+    case 'MMINUS':
+      memory -= output;
+      break;
+    case 'MRC':
+      setOutput(memory);
+      // Enable calculation with memory recall as second argument
+      if (currentOperator) operator = currentOperator;
+      currentOperator = null;
+  }
+  functionAdded = true;
 }
 
 const buttonHandler = (type, value) => {
@@ -132,6 +167,9 @@ const buttonHandler = (type, value) => {
     case 'function':
       addFunction(value);
       break;
+    case 'memory':
+      memoryAccess(value);
+      break;
   }
 }
 
@@ -141,6 +179,7 @@ const reset = () => {
   equalsPressed = false;
   secondValue = null;
   result.length = 0;
+  memory = 0;
   setOutput(0);
   console.clear();
 };
