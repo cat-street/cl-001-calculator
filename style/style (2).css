@@ -18,7 +18,7 @@
 .calculator {
   width: 300px;
   box-sizing: border-box;
-  padding: 20px 25px 45px;
+  padding: 20px 25px 30px;
   background: radial-gradient(ellipse farthest-corner at 20% 65%, #525864, #130f0e);
   color: rgba(255, 255, 255, .8);
   font-family: 'Overpass Mono', monospace;
@@ -31,9 +31,7 @@
               0 0 25px 0 rgba(0, 0, 0, .3),
               10px 0 4px 10px rgba(0, 0, 0, .3),
               inset 0 0 3px 0 rgba(0, 0, 0, .7),
-              inset 0 0 10px 0 rgba(0, 0, 0, .5),
-              inset 0 -25px 5px 0 rgba(0, 0, 0, .2),
-              inset 0 -5px 10px 0 rgba(255, 255, 255, .3);
+              inset 0 0 10px 0 rgba(0, 0, 0, .5);
 }
 
 .calculator__top {
@@ -44,7 +42,7 @@
 
 .calculator__heading {
   font-family: 'Slabo 27px', serif;
-  text-shadow: 0 0 2px rgba(255, 255, 255, .2);
+  text-shadow: 0 0 2px rgba(255, 255, 255, .4);
 }
 
 .calculator__title {
@@ -145,52 +143,33 @@
   align-items: center;
   padding-top: 5px;
   letter-spacing: -2px;
+  overflow: hidden;
   outline: none;
-  position: relative;
   background: linear-gradient(25deg, #525a65, #3b424c);
   color: rgba(255, 255, 255, .8);
   text-shadow: 0 0 2px rgba(255, 255, 255, .2);
   box-shadow: inset 2px -1px 1px 0 rgba(255, 255, 255, .2),
               inset -3px 2px 5px 0 rgba(0, 0, 0, .2),
-              4px 1px 1px 0 rgba(0, 0, 0, .5),
-              -1px -3px 1px 0 rgba(0, 0, 0, .5),
-              4px -3px 1px 0 rgba(0, 0, 0, .5),
-              -1px -1px 5px 0 rgba(0, 0, 0, .5);
-              /* 5px -1px 1px 0 rgba(255, 255, 255, .3); */
-}
-
-
-.button:active {
-  box-shadow: inset 2px -1px 1px 0 rgba(255, 255, 255, .2),
-              inset -3px 2px 5px 0 rgba(0, 0, 0, .2),
-              3px 1px 1px 0 rgba(0, 0, 0, .5),
-              -1px -1px 1px 0 rgba(0, 0, 0, .5),
-              3px -1px 1px 0 rgba(0, 0, 0, .5),
-              -1px -1px 5px 0 rgba(0, 0, 0, .5),
-              4px 0 1px 0 rgba(255, 255, 255, .3);
-  transform: translate(1px, -1px);
+              5px 0 1px 0 rgba(255, 255, 255, .3),
+              4px 1px 1px 0  rgba(0, 0, 0, .5),
+              -1px -3px 1px 0  rgba(0, 0, 0, .5),
+              4px -3px 1px 0  rgba(0, 0, 0, .5),
+              -1px -1px 1px 0  rgba(0, 0, 0, .5)
+              ;
 }
 
 .button[value="NEGATE"] {
-  font-size: 20px;
+  font-size: 24px;
 }
 
 .overline {
-  margin-top: 5px;
+  margin-top: 8px;
 }
 
 .button_type_operation {
-  font-size: 36px;
+  font-size: 40px;
 }
 
 .button_type_memory {
   font-size: 24px;
-}
-
-.button_type_advanced {
-  font-size: 24px;
-}
-
-.button_type_reset {
-  background: linear-gradient(25deg, #9cc9dc, #68a4c0);
 }

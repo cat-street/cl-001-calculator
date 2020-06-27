@@ -2,6 +2,7 @@
 
 const buttons = document.querySelectorAll('.button');
 const currentOutput = document.querySelector('.calculator__screen');
+const memoryIndicator = document.querySelector('.calculator__screen-mem');
 const result = [];
 let currentOperator = null;
 let operator = null;
@@ -13,8 +14,7 @@ let memory = 0;
 // Return the number currently on screen
 const getOutput = () => currentOutput.value;
 // Convert & set the number on screen
-const setOutput = value =>
-  (currentOutput.value = value.toString().slice(0, 14));
+const setOutput = value => currentOutput.value = value.toString().slice(0, 10);
 
 
 const printNumber = value => {
@@ -75,7 +75,12 @@ const calculateResultHandler = () => {
   // Setting 'calculation complete' flag
   equalsPressed = true;
   console.log(result);
-  setOutput(resultValue);
+  // Show 'Error' if result is bigger than the screen length
+  if (resultValue > 9999999999) {
+    setOutput('Error');
+    operator = null;
+  }
+  else setOutput(resultValue);
 };
 
 const calculateResult = (operation, firstValue, secondValue) => {
@@ -107,7 +112,6 @@ const addFunction = func => {
         functionAdded = true;
       } else {
         output = 'Error';
-        return;
       }
       break;
       case 'PERCENT':
@@ -127,13 +131,16 @@ const addFunction = func => {
 }
 
 const memoryAccess = type => {
-  let output = +getOutput();
+  let output = getOutput();
+  if (output === 'Error') return;
   switch (type) {
     case 'MPLUS':
-      memory += output;
+      memory += +output;
+      memoryIndicator.classList.add('calculator__screen-mem_visible');
       break;
     case 'MMINUS':
-      memory -= output;
+      memory -= +output;
+      memoryIndicator.classList.add('calculator__screen-mem_visible');
       break;
     //TODO Clear memory
     case 'MRC':
@@ -176,6 +183,7 @@ const reset = () => {
   secondValue = null;
   result.length = 0;
   memory = 0;
+  memoryIndicator.classList.remove('calculator__screen-mem_visible');
   setOutput(0);
   console.clear();
 };
