@@ -14,10 +14,10 @@ let memory = 0;
 // Return the number currently on screen
 const getOutput = () => currentOutput.value;
 // Convert & set the number on screen
-const setOutput = value => currentOutput.value = value.toString().slice(0, 10);
+const setOutput = (value) =>
+  (currentOutput.value = value.toString().slice(0, 10));
 
-
-const printNumber = value => {
+const printNumber = (value) => {
   let output = getOutput();
   // Reset after pressing 'EQUALS' || on error
   if (equalsPressed || output === 'Error') {
@@ -40,10 +40,10 @@ const printNumber = value => {
     if (output.indexOf('.') !== -1) return;
   } else if (output === '0') output = '';
   // Print the number if typed
-  setOutput(output += value);
-}
+  setOutput((output += value));
+};
 
-const addOperator = operation => {
+const addOperator = (operation) => {
   // Prevent logging of multiple operation pressing || operations on error
   if (currentOperator || getOutput() === 'Error') return;
   // Ability to continue calculation after 'EQUALS' operation
@@ -57,7 +57,7 @@ const addOperator = operation => {
   result.push(+getOutput(), operation);
   // Save the operator for the calculation
   currentOperator = operation;
-}
+};
 
 const calculateResultHandler = () => {
   // Memorize result if 'EQUALS' pressed again
@@ -79,8 +79,7 @@ const calculateResultHandler = () => {
   if (resultValue > 9999999999) {
     setOutput('Error');
     operator = null;
-  }
-  else setOutput(resultValue);
+  } else setOutput(resultValue);
 };
 
 const calculateResult = (operation, firstValue, secondValue) => {
@@ -88,15 +87,24 @@ const calculateResult = (operation, firstValue, secondValue) => {
     case 'ADD':
       return +math.add(math.bignumber(firstValue), math.bignumber(secondValue));
     case 'SUBTRACT':
-      return +math.subtract(math.bignumber(firstValue), math.bignumber(secondValue));
+      return +math.subtract(
+        math.bignumber(firstValue),
+        math.bignumber(secondValue)
+      );
     case 'MULTIPLY':
-      return +math.multiply(math.bignumber(firstValue), math.bignumber(secondValue));
+      return +math.multiply(
+        math.bignumber(firstValue),
+        math.bignumber(secondValue)
+      );
     case 'DIVIDE':
-      return +math.divide(math.bignumber(firstValue), math.bignumber(secondValue));
+      return +math.divide(
+        math.bignumber(firstValue),
+        math.bignumber(secondValue)
+      );
   }
-}
+};
 
-const addFunction = func => {
+const addFunction = (func) => {
   let output = getOutput();
   if (output === 'Error' || output === '0') return;
   switch (func) {
@@ -114,10 +122,10 @@ const addFunction = func => {
         output = 'Error';
       }
       break;
-      case 'PERCENT':
-        output = +math.multiply(math.bignumber(output), 0.01);
-        // Setting 'function key pressed' flag
-        functionAdded = true;
+    case 'PERCENT':
+      output = +math.multiply(math.bignumber(output), 0.01);
+      // Setting 'function key pressed' flag
+      functionAdded = true;
       break;
     case 'BACKSPACE':
       // Prevent deleting when calculation is in progress
@@ -128,9 +136,9 @@ const addFunction = func => {
       break;
   }
   setOutput(output);
-}
+};
 
-const memoryAccess = type => {
+const memoryAccess = (type) => {
   let output = getOutput();
   if (output === 'Error') return;
   switch (type) {
@@ -150,7 +158,7 @@ const memoryAccess = type => {
       currentOperator = null;
   }
   functionAdded = true;
-}
+};
 
 const buttonHandler = (type, value) => {
   switch (type) {
@@ -166,7 +174,7 @@ const buttonHandler = (type, value) => {
       break;
     case 'clear':
       reset();
-      break
+      break;
     case 'function':
       addFunction(value);
       break;
@@ -174,7 +182,7 @@ const buttonHandler = (type, value) => {
       memoryAccess(value);
       break;
   }
-}
+};
 
 const reset = () => {
   currentOperator = null;

@@ -27,13 +27,13 @@
   border-bottom-left-radius: 100% 60px;
   border-bottom-right-radius: 100% 60px;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, .7),
-              0 0 20px 0 rgba(0, 0, 0, .5),
-              0 0 25px 0 rgba(0, 0, 0, .3),
-              10px 0 4px 10px rgba(0, 0, 0, .3),
-              inset 0 0 3px 0 rgba(0, 0, 0, .7),
-              inset 0 0 10px 0 rgba(0, 0, 0, .5),
-              inset 0 -25px 5px 0 rgba(0, 0, 0, .2),
-              inset 0 -5px 10px 0 rgba(255, 255, 255, .3);
+    0 0 20px 0 rgba(0, 0, 0, .5),
+    0 0 25px 0 rgba(0, 0, 0, .3),
+    10px 0 4px 10px rgba(0, 0, 0, .3),
+    inset 0 0 3px 0 rgba(0, 0, 0, .7),
+    inset 0 0 10px 0 rgba(0, 0, 0, .5),
+    inset 0 -25px 5px 0 rgba(0, 0, 0, .2),
+    inset 0 -5px 10px 0 rgba(255, 255, 255, .3);
 }
 
 .calculator__top {
@@ -68,16 +68,16 @@
   border-radius: 3px;
   background-color: #3d2115;
   box-shadow: 0 -5px 5px -5px rgba(255, 255, 255, .2),
-              5px 0 3px -5px rgba(255, 255, 255, .8),
-              0 5px 5px -5px rgba(0, 0, 0, .5),
-              -5px 0 3px -3px rgba(0, 0, 0, .8),
-              inset 0 -5px 3px -3px rgba(0, 0, 0, .5),
-              inset 5px 0 5px -2px rgba(0, 0, 0, .8);
+    5px 0 3px -5px rgba(255, 255, 255, .8),
+    0 5px 5px -5px rgba(0, 0, 0, .5),
+    -5px 0 3px -3px rgba(0, 0, 0, .8),
+    inset 0 -5px 3px -3px rgba(0, 0, 0, .5),
+    inset 5px 0 5px -2px rgba(0, 0, 0, .8);
   background-image: repeating-linear-gradient(to right,
-                                              transparent,
-                                              transparent 26px,
-                                              rgba(255, 255, 255, .1) 26px,
-                                              rgba(255, 255, 255, .1) 27px);
+      transparent,
+      transparent 26px,
+      rgba(255, 255, 255, .1) 26px,
+      rgba(255, 255, 255, .1) 27px);
   /* box-shadow: inset 0 0 3px 0 rgba(0, 0, 0, .5); */
 }
 
@@ -101,11 +101,11 @@
   letter-spacing: -2px;
   border-radius: 5px;
   box-shadow: 0 -5px 5px -5px rgba(255, 255, 255, .3),
-              5px 0 3px -5px rgba(255, 255, 255, .8),
-              0 5px 5px -5px rgba(0, 0, 0, .5),
-              -5px 0 3px -3px rgba(0, 0, 0, .8),
-              inset 0 -5px 3px -3px rgba(0, 0, 0, .5),
-              inset 5px 0 5px -2px rgba(0, 0, 0, .8);
+    5px 0 3px -5px rgba(255, 255, 255, .8),
+    0 5px 5px -5px rgba(0, 0, 0, .5),
+    -5px 0 3px -3px rgba(0, 0, 0, .8),
+    inset 0 -5px 3px -3px rgba(0, 0, 0, .5),
+    inset 5px 0 5px -2px rgba(0, 0, 0, .8);
 }
 
 .calculator__screen:disabled {
@@ -151,23 +151,22 @@
   color: rgba(255, 255, 255, .8);
   text-shadow: 0 0 2px rgba(255, 255, 255, .2);
   box-shadow: inset 2px -1px 1px 0 rgba(255, 255, 255, .2),
-              inset -3px 2px 5px 0 rgba(0, 0, 0, .2),
-              4px 1px 1px 0 rgba(0, 0, 0, .5),
-              -1px -3px 1px 0 rgba(0, 0, 0, .5),
-              4px -3px 1px 0 rgba(0, 0, 0, .5),
-              -1px -1px 5px 0 rgba(0, 0, 0, .5);
-              /* 5px -1px 1px 0 rgba(255, 255, 255, .3); */
+    inset -3px 2px 5px 0 rgba(0, 0, 0, .2),
+    4px 1px 1px 0 rgba(0, 0, 0, .5),
+    -1px -3px 1px 0 rgba(0, 0, 0, .5),
+    4px -3px 1px 0 rgba(0, 0, 0, .5),
+    -1px -1px 5px 0 rgba(0, 0, 0, .5);
+  /* 5px -1px 1px 0 rgba(255, 255, 255, .3); */
 }
-
 
 .button:active {
   box-shadow: inset 2px -1px 1px 0 rgba(255, 255, 255, .2),
-              inset -3px 2px 5px 0 rgba(0, 0, 0, .2),
-              3px 1px 1px 0 rgba(0, 0, 0, .5),
-              -1px -1px 1px 0 rgba(0, 0, 0, .5),
-              3px -1px 1px 0 rgba(0, 0, 0, .5),
-              -1px -1px 5px 0 rgba(0, 0, 0, .5),
-              4px 0 1px 0 rgba(255, 255, 255, .3);
+    inset -3px 2px 5px 0 rgba(0, 0, 0, .2),
+    3px 1px 1px 0 rgba(0, 0, 0, .5),
+    -1px -1px 1px 0 rgba(0, 0, 0, .5),
+    3px -1px 1px 0 rgba(0, 0, 0, .5),
+    -1px -1px 5px 0 rgba(0, 0, 0, .5),
+    4px 0 1px 0 rgba(255, 255, 255, .3);
   transform: translate(1px, -1px);
 }
 
@@ -175,8 +174,14 @@
   font-size: 20px;
 }
 
-.overline {
-  margin-top: 5px;
+.button[value="SQUARE"],
+.button[value="BACKSPACE"] {
+  padding: 0;
+}
+
+.square-symbol {
+  width: 31px;
+  height: 19px;
 }
 
 .button_type_operation {
@@ -193,4 +198,9 @@
 
 .button_type_reset {
   background: linear-gradient(25deg, #9cc9dc, #68a4c0);
+}
+
+.backspace-symbol {
+  width: 24px;
+  height: 18px;
 }

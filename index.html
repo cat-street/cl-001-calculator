@@ -7,8 +7,11 @@
   <title>Calculator</title>
   <link rel="stylesheet" href="./vendor/normalize.css">
   <link rel="stylesheet" href="./style/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@700&family=Share+Tech+Mono&family=Slabo+27px&display=swap" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/7.0.1/math.min.js"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@700&family=Share+Tech+Mono&family=Slabo+27px&display=swap"
+    rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/7.0.1/math.min.js">
+  </script>
   <script src="./scripts/index.js" defer></script>
 </head>
 
@@ -42,9 +45,19 @@
       <button type="button" data-type="function"
         class="button button_type_advanced" value="PERCENT">%</button>
       <button type="button" data-type="function"
-        class="button button_type_advanced" value="SQUARE">√<span class="overline">‾</span></button>
+        class="button button_type_advanced" value="SQUARE">
+        <svg class="square-symbol" viewBox="0 0 33 23" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 10l5 11h2.5l6-19H33" stroke="#fff" stroke-width="3" />
+          </svg>
+      </button>
       <button type="button" data-type="function"
-        class="button button_type_operation" value="BACKSPACE">←</button>
+        class="button button_type_operation" value="BACKSPACE">
+        <svg class="backspace-symbol" viewBox="0 0 27 22" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2l-9 9 9 9M3 11h24" stroke="#fff" stroke-width="3" />
+          </svg>
+      </button>
       <button type="button" data-type="number" class="button button_type_number"
         value="7">7</button>
       <button type="button" data-type="number" class="button button_type_number"
@@ -73,8 +86,8 @@
         value="0">0</button>
       <button type="button" data-type="number" class="button button_type_number"
         value=".">.</button>
-      <button type="button" data-type="equals" class="button button_type_operation"
-        value="EQUALS">=</button>
+      <button type="button" data-type="equals"
+        class="button button_type_operation" value="EQUALS">=</button>
       <button type="button" data-type="operation"
         class="button button_type_operation" value="ADD">+</button>
     </div>
