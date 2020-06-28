@@ -17,6 +17,7 @@
 
 .calculator {
   width: 300px;
+  min-width: 300px;
   box-sizing: border-box;
   padding: 20px 25px 45px;
   background: radial-gradient(ellipse farthest-corner at 20% 65%, #525864, #130f0e);
