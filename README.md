@@ -1,6 +1,8 @@
 # CatLogic CL-001 Calculator
 **Self-study JavaScript Project**
 
+![Calculator Preview](./images/calc_gh.png)
+
 ### About
 
 Vanilla JS Calculator with a few advanced functions.
