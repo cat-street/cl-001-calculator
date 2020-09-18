@@ -6,7 +6,7 @@
 ### About
 
 Vanilla JS Calculator with a few advanced functions.
-* Current live version at http://catlogic.ru/cl-001-calculator/
+* Current live version at https://cat-street.github.io/cl-001-calculator/
 * How-to blog [at Dev.to](https://dev.to/cat__logic/styling-the-catlogic-calculator-in-css-d7i)
 
 ### Under the hood
